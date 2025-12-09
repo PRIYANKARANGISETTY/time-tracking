@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>24h TimeTracker — App</title>
+  <link rel="stylesheet" href="styles.css" />
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+  <script type="module" src="https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js"></script>
+  <script type="module" src="https://www.gstatic.com/firebasejs/10.6.0/firebase-auth.js"></script>
+  <script type="module" src="https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js"></script>
+</head>
+
+<body>
+  <header class="topbar">
+    <h2>24h TimeTracker</h2>
+    <div>
+      <input type="date" id="datePicker">
+      <button id="signOutBtn">Sign out</button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="card">
+      <h3>Log Activities</h3>
+
+      <div id="remaining">Remaining: 1440 minutes</div>
+
+      <form id="addActivityForm">
+        <input id="title" placeholder="Title">
+        <select id="category">
+          <option>Work</option><option>Study</option>
+          <option>Sleep</option><option>Entertainment</option>
+          <option>Exercise</option><option>Other</option>
+        </select>
+        <input id="minutes" type="number" placeholder="Minutes">
+        <button type="submit">Add Activity</button>
+      </form>
+
+      <button id="analyseBtn" disabled>Analyse</button>
+
+      <div id="activitiesList"></div>
+    </section>
+
+    <section class="card analytics" id="analyticsSection">
+      <h3>Analytics</h3>
+
+      <div id="noData">
+        <p>No data for this day.</p>
+      </div>
+
+      <div id="charts" style="display: none;">
+        <h4>Summary</h4>
+        <p>Total Hours: <span id="totalHours">0</span></p>
+        <p>Total Activities: <span id="numActivities">0</span></p>
+
+        <canvas id="pieChart" width="400"></canvas>
+        <canvas id="barChart" width="400"></canvas>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="app.js"></script>
+</body>
+</html>
